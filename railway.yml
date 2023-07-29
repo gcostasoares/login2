@@ -1,0 +1,28 @@
+version: 2
+
+build:
+  dockerfile: Dockerfile
+  context: .
+
+release:
+  image: ${{ steps.build.outputs.image }}
+
+services:
+  web:
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    env:
+      DEBUG: "1"
+    disk: 1024
+
+  db:
+    image: postgres:latest
+    env:
+      POSTGRES_DB: registration_db
+      POSTGRES_USER: registration_user
+      POSTGRES_PASSWORD: registration_password
+    disk: 1024
+
+networks:
+  backend:

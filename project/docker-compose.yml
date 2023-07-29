@@ -7,7 +7,7 @@ services:
       context: ./registro 
       dockerfile: Dockerfile 
     container_name: project
-    command: python manage.py runserver 127.0.0.1:8000
+    command: python manage.py runserver 
     volumes:
       - ./registro:/app 
     ports:

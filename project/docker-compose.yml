@@ -3,11 +3,9 @@ version: '3.8'
 services:
 
   web:
-    build:
-      context: ./registro 
-      dockerfile: Dockerfile 
-    container_name: project
-    command: python manage.py runserver 
+    image: python:3.9
+    container_name: django_web
+    command: python manage.py runserver
     volumes:
       - ./registro:/app 
     ports:

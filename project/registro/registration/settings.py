@@ -28,7 +28,7 @@ STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 DEBUG = True
 
 
-ALLOWED_HOST = ['*']
+ALLOWED_HOSTS = ['*']
 
 SECRET_KEY = '2_8@9$c!0-h9d30h5(16-um^&)f_s%f5+ymx*ak2b9m#$m^n=-'
 

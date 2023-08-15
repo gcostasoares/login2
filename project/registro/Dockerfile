@@ -1,12 +1,16 @@
+FROM python:3.8
+
+# Create a non-root user and switch to it
+RUN useradd -ms /bin/bash myuser
+USER myuser
+
 WORKDIR /project/registro
 
-COPY . .
+COPY --chown=myuser . .
 
-RUN pip install --upgrade pip
-RUN pip install django
-RUN pip install djangorestframework
-
+RUN pip install --upgrade pip && \
+    pip install django djangorestframework
 
 EXPOSE 8000
 
-CMD ["python", "manage.py", "runserver", "127.0.0.1:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
